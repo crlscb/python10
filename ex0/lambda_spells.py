@@ -56,11 +56,19 @@ def mage_stats(
 
 if __name__ == "__main__":
     artifacts = [
-        {"name": "Crystal Orb", "power": 89, "type": "focus"},
-        {"name": "Fire Staff", "power": 100, "type": "weapon"},
+        {"name": "Crystal Orb", "power": 85, "type": "focus"},
+        {"name": "Fire Staff", "power": 92, "type": "weapon"},
         {"name": "Ancient Crown", "power": 250, "type": "relic"}
     ]
-    print(artifact_sorter(artifacts))
+    print("\nTesting artifact sorter...")
+    sorted_artifacts = artifact_sorter(artifacts)
+    print(
+          f"{sorted_artifacts[0]['name']} "
+          f"({sorted_artifacts[0]['power']} power)"
+          f" comes before {sorted_artifacts[1]['name']} "
+          f"({sorted_artifacts[1]['power']} power)"
+    )
+    print()
 
     mages = [
         {"name": "Aldric", "power": 45, "element": "Fire"},
@@ -70,9 +78,23 @@ if __name__ == "__main__":
         {"name": "Zephyr", "power": 200, "element": "Wind"},
         {"name": "Mordered", "power": 100, "element": "Darkness"}
     ]
-    print(power_filter(mages, 100))
+    print("\nTesting power filter...")
+    power_filtered = power_filter(mages, 100)
+    for mage in power_filtered:
+        print(
+            f"{mage['name']} ({mage['power']} power, "
+            f"{mage['element']})"
+        )
 
     spells = ["fireball", "heal", "shield", "teleport"]
-    print(spell_transformer(spells))
+    print("\nTesting spell transformer...")
+    spell_transformered = spell_transformer(spells)
+    print(*spell_transformered)
 
-    print(mage_stats(mages))
+    print("\nTesting mage stats...")
+    stats = mage_stats(mages)
+    print(
+        f"max power: ({stats['max_power']}) \n"
+        f"min power: ({stats['min_power']}) \n"
+        f"avg power: ({stats['avg_power']})"
+    )
